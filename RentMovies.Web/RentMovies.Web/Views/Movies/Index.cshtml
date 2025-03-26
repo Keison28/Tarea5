@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a class="btn-outline-primary btn" asp-action="Create">Insert new Movie</a>
+</p>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                    <a class="btn-outline-success btn" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a class="btn-outline-info btn" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a class="btn-outline-danger btn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
